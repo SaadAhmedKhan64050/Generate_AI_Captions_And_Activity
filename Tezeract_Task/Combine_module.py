@@ -72,7 +72,7 @@ def extract_activity_clip(video_path, user_text, output_folder="clips"):
     # Find the most similar caption
     similarities = util.pytorch_cos_sim(user_embedding, caption_embeddings)[0]
     best_match_index = torch.argmax(similarities).item()
-    best_time = captions[best_match_index][0]
+    best_time = captions[best_match_index][0]  ## [0] extracts the first element from the tuple
     
     # Define the time window for the clip (e.g., 5 seconds before and after)
     start_time = max(0, best_time - 5)
